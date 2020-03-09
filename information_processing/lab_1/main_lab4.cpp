@@ -1,9 +1,10 @@
 #include<files.h>
 #include<logger.h>
-#include <twowordindex.h>
-#include<CoordInvertedIndex.h>
+#include<wordtree.h>
+#include"ngramindex.h"
+#include"permutationindex.h"
 
-void test_2wordindex(int argc, char *argv[]){
+void testWordTreePrefix(int argc, char *argv[]){
     vector<string> files;
 
     for(int i=1;i<argc;++i){
@@ -17,16 +18,55 @@ void test_2wordindex(int argc, char *argv[]){
         files.insert(files.end(),tmp.begin(),tmp.end());
     }
 
-    TwoWordIndex index(files);
+    WordTree word_tree = WordTree(files);
+
+    vector<string> words;
+
+    string s = "like";
+
+    while(1){
+        words = split(s);
+        auto res = word_tree.get_words(words[0]);
+        Info("Searching for " + words[0]);
+        Info("Found " + to_string(res.size()));
+        for(auto &x:res){
+            Info("Found in " + x);
+        }
+        Logger::getInstance().print_logs(std::cout);
+        getline(cin,s);
+        if(s.length() <= 1){
+            break;
+        }
+    }
+
+}
+
+
+
+void testJokerPermutation(int argc, char *argv[]){
+    vector<string> files;
+
+    for(int i=1;i<argc;++i){
+        vector<string> tmp = get_files(argv[i]);
+        Info("Adding folder " + string(argv[i]) + ", total count = " + to_string(tmp.size()));
+        for(int j=0;j<tmp.size();++j){
+            Info(" | File " + tmp[j]);
+        }
+        Info(" +------------------------------------------");
+
+        files.insert(files.end(),tmp.begin(),tmp.end());
+    }
+
+    PermutationIndex perm_index = PermutationIndex(files);
 
 
     vector<string> words;
 
-    string s = "Test test test";
+    string s = "like";
 
     while(1){
-        words = split(s);
-        auto res = index.search(words);
+      //  words = split(s);
+        auto res = perm_index.search_joker(s);
         Info("Searching for " + s);
         Info("Found " + to_string(res.size()));
         for(auto &x:res){
@@ -42,7 +82,7 @@ void test_2wordindex(int argc, char *argv[]){
 }
 
 
-void test_coordindex(int argc, char *argv[]){
+void testNgramIndex(int argc, char *argv[]){
     vector<string> files;
 
     for(int i=1;i<argc;++i){
@@ -56,17 +96,15 @@ void test_coordindex(int argc, char *argv[]){
         files.insert(files.end(),tmp.begin(),tmp.end());
     }
 
-    CoordInvertedIndex index(files);
+    NgramIndex ngram_index = NgramIndex(3,files);
 
 
     vector<string> words;
 
-    string s = "test test test";
+    string s = "like";
 
     while(1){
-        words = split(s);
-      //  auto res = index.naive_search(words);
-        auto res = index.radius_search(words,10);
+        auto res = ngram_index.search_joker(s);
         Info("Searching for " + s);
         Info("Found " + to_string(res.size()));
         for(auto &x:res){
@@ -81,13 +119,14 @@ void test_coordindex(int argc, char *argv[]){
 
 }
 
-int main_lab3(int argc, char *argv[]){
+
+int main_lab4(int argc, char *argv[]){
 
 
     StartTimer();
     Info("Starting");
-    test_coordindex(argc,argv);
-   // test_2wordindex(argc,argv);
+    //testNgramIndex(argc,argv);
+     testJokerPermutation(argc,argv);
 
     Info("Finished");
     EndTimer();
@@ -95,7 +134,7 @@ int main_lab3(int argc, char *argv[]){
 }
 
 
-//int main(int argc, char *argv[]){
-//    main_lab3(argc,argv);
-//}
+int main(int argc, char *argv[]){
+    main_lab4(argc,argv);
+}
 

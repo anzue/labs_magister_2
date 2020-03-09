@@ -89,3 +89,20 @@ string get_filename(string path){
     ++pos;
     return path.substr(pos,path.size() - pos);
 }
+
+int get_letter_code(char a){
+    if(a >= 'a' && a <= 'z')
+        return a-'a'+1;
+    if(a >= 'A' && a <= 'Z')
+        return a-'A'+1;
+    return 0;
+}
+
+char get_code_letter(int a){
+    if(a == 0){
+        return '$';
+    }
+    return a-1+'a';
+}
+
+
