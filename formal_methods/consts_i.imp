@@ -1,0 +1,14 @@
+/* consts_i
+ * Author: User
+ * Creation date: 21.03.2020
+ */
+
+IMPLEMENTATION consts_i
+REFINES consts
+VALUES
+   MAX_COOKING_TIME = 300;             
+   OVERHEAT_TEMPERATURE = 80;
+   MAX_TEMPERATURE = 100;
+   MIN_COOKING_TEMPERATURE = 40;
+   ROOM_TEMPERATURE = 15
+END
