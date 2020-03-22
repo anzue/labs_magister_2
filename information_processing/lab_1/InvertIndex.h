@@ -35,49 +35,11 @@ public:
     vector<int> get_word(WORD_TYPE s){
         return docs[process_word(s)];
     }
+
+
 };
 
-vector<int> And_ii(vector<int> a,vector<int> b){
-    int b_pos = 0;
-    vector<int> res;
-    for(int i=0;i<a.size() && b_pos < b.size();++i){
-        while(b_pos < b.size() && b[b_pos] < a[i] ) ++ b_pos;
-        if(b_pos < b.size() && b[b_pos] == a[i]){
-            res.push_back(a[i]);
-        }
-    }
-    return res;
-}
 
-
-vector<int> Or_ii(vector<int> a,vector<int> b){
-    int b_pos = 0;
-    vector<int> res;
-    for(int i=0;i<a.size();++i){
-        while(b_pos < b.size() && b[b_pos] < a[i]){
-            res.push_back(b[b_pos]);
-            ++b_pos;
-        }
-        res.push_back(a[i]);
-    }
-    while(b_pos<b.size()){
-        res.push_back(b[b_pos++]);
-    }
-    return res;
-}
-
-vector<int> Not_ii(vector<int> a, int doc_count){
-    int pos = 0;
-    vector<int> res;
-    for(int i=0;i<doc_count;++i){
-        if(a[pos] == i){
-            ++pos;
-        }else{
-            res.push_back(i);
-        }
-    }
-    return res;
-}
 
 
 #endif // INVERTINDEX_H

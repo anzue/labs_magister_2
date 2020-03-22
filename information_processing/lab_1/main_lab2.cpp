@@ -1,7 +1,9 @@
 #include<incedencymatrix.h>
 #include<invertindex.h>
+#include<invertindexfunctions.h>
 #include<files.h>
 #include<logger.h>
+
 
 void test_invertindex(int argc, char *argv[]){
 

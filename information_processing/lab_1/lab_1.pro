@@ -15,9 +15,11 @@ SOURCES += \
         main_lab2.cpp \
         main_lab3.cpp \
         main_lab4.cpp \
+        main_lab_spimi_index.cpp \
         mapvocabulary.cpp \
         ngramindex.cpp \
         permutationindex.cpp \
+        spimiindex.cpp \
         twowordindex.cpp \
         vocabulary.cpp \
         wordtree.cpp
@@ -28,11 +30,13 @@ HEADERS += \
     incedencymatrix.h \
     indexvocabulary.h \
     invertindex.h \
+    invertindexfunctions.h \
     json.hpp \
     logger.h \
     mapvocabulary.h \
     ngramindex.h \
     permutationindex.h \
+    spimiindex.h \
     twowordindex.h \
     vocabulary.h \
     wordtree.h

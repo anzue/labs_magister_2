@@ -134,7 +134,5 @@ int main_lab4(int argc, char *argv[]){
 }
 
 
-int main(int argc, char *argv[]){
-    main_lab4(argc,argv);
-}
+
 
