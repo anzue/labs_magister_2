@@ -7,6 +7,8 @@ QMAKE_CXXFLAGS += -fopenmp
 LIBS += -fopenmp
 
 SOURCES += \
+        compressedinvertindex.cpp \
+        compressedvocabulary.cpp \
         files.cpp \
         incedencymatrix.cpp \
         indexvocabulary.cpp \
@@ -25,6 +27,8 @@ SOURCES += \
         wordtree.cpp
 
 HEADERS += \
+    compressedinvertindex.h \
+    compressedvocabulary.h \
     coordinvertedindex.h \
     files.h \
     incedencymatrix.h \

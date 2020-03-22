@@ -46,7 +46,7 @@ public:
     }
 
     int size(){
-        return words.size() + sizeof(words_count);
+        return words.size() * (sizeof(WORD_TYPE) + sizeof(int)) + sizeof(words_count);
     }
 
 };
