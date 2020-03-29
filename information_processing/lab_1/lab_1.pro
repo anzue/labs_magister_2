@@ -18,13 +18,15 @@ SOURCES += \
         main_lab3.cpp \
         main_lab4.cpp \
         main_lab_spimi_index.cpp \
+        main_zone_range_lab.cpp \
         mapvocabulary.cpp \
         ngramindex.cpp \
         permutationindex.cpp \
         spimiindex.cpp \
         twowordindex.cpp \
         vocabulary.cpp \
-        wordtree.cpp
+        wordtree.cpp \
+        zoneranger.cpp
 
 HEADERS += \
     compressedinvertindex.h \
@@ -43,7 +45,8 @@ HEADERS += \
     spimiindex.h \
     twowordindex.h \
     vocabulary.h \
-    wordtree.h
+    wordtree.h \
+    zoneranger.h
 
 DISTFILES += \
     ReadMe.txt
